@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { ChevronRight, Minus, Plus, ShoppingCart, Star, Truck, Shield, Package, Heart } from 'lucide-react';
@@ -15,7 +14,7 @@ const products = [
     id: '1',
     name: 'Premium Turmeric Powder',
     description: 'Our premium turmeric powder is sourced from the finest farms in India, carefully processed to maintain its vibrant color and potent flavor. This versatile spice adds a warm, earthy flavor and golden color to curries, rice dishes, and more.',
-    longDescription: 'Turmeric has been used in cooking and traditional medicine for thousands of years. Our premium grade turmeric powder is grown using sustainable farming practices and harvested at peak maturity to ensure maximum flavor and nutritional benefits. The roots are carefully cleaned, dried, and ground to a fine powder, preserving the essential oils and curcumin content.\n\nWith its vibrant golden-orange color and distinctive earthy aroma, this turmeric powder adds depth and warmth to a wide variety of dishes. It's a staple in Indian, Middle Eastern, and Southeast Asian cuisines, commonly used in curries, rice dishes, soups, and marinades.\n\nBeyond its culinary applications, turmeric is celebrated for its potential health benefits, including anti-inflammatory and antioxidant properties.',
+    longDescription: "Turmeric has been used in cooking and traditional medicine for thousands of years. Our premium grade turmeric powder is grown using sustainable farming practices and harvested at peak maturity to ensure maximum flavor and nutritional benefits. The roots are carefully cleaned, dried, and ground to a fine powder, preserving the essential oils and curcumin content.\n\nWith its vibrant golden-orange color and distinctive earthy aroma, this turmeric powder adds depth and warmth to a wide variety of dishes. It's a staple in Indian, Middle Eastern, and Southeast Asian cuisines, commonly used in curries, rice dishes, soups, and marinades.\n\nBeyond its culinary applications, turmeric is celebrated for its potential health benefits, including anti-inflammatory and antioxidant properties.",
     category: 'Ground Spices',
     price: 6.99,
     rating: 4.8,
@@ -48,7 +47,7 @@ const products = [
     id: '2',
     name: 'Organic Black Pepper',
     description: 'Organically grown black peppercorns with a bold, pungent flavor and aroma. Hand-picked at peak ripeness and carefully dried to preserve their essential oils.',
-    longDescription: 'Known as the "King of Spices," black pepper has been one of the world's most valued spices throughout history. Our organic black peppercorns are grown in the ideal climate of Vietnam's central highlands, where the perfect combination of soil, temperature, and rainfall produces peppercorns with exceptional flavor and aroma.\n\nThese premium peppercorns are harvested by hand at peak ripeness, then sun-dried to develop their characteristic wrinkled appearance and concentrated flavor. The result is a bold, complex pepper with notes of wood, citrus, and spice that adds depth to any dish.\n\nFreshly grinding these peppercorns releases their essential oils, providing maximum flavor and aroma that pre-ground pepper simply cannot match.',
+    longDescription: 'Known as the "King of Spices," black pepper has been one of the world\'s most valued spices throughout history. Our organic black peppercorns are grown in the ideal climate of Vietnam\'s central highlands, where the perfect combination of soil, temperature, and rainfall produces peppercorns with exceptional flavor and aroma.\n\nThese premium peppercorns are harvested by hand at peak ripeness, then sun-dried to develop their characteristic wrinkled appearance and concentrated flavor. The result is a bold, complex pepper with notes of wood, citrus, and spice that adds depth to any dish.\n\nFreshly grinding these peppercorns releases their essential oils, providing maximum flavor and aroma that pre-ground pepper simply cannot match.',
     category: 'Whole Spices',
     price: 7.49,
     rating: 4.9,
