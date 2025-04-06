@@ -64,6 +64,7 @@ const ContactForm = () => {
             value={formData.name}
             onChange={handleChange}
             placeholder="Enter your name"
+            className="bg-gray-50"
             required
           />
         </div>
@@ -79,6 +80,7 @@ const ContactForm = () => {
             value={formData.email}
             onChange={handleChange}
             placeholder="Enter your email"
+            className="bg-gray-50"
             required
           />
         </div>
@@ -93,6 +95,7 @@ const ContactForm = () => {
             value={formData.phone}
             onChange={handleChange}
             placeholder="Enter your phone number"
+            className="bg-gray-50"
             required
           />
         </div>
@@ -108,6 +111,7 @@ const ContactForm = () => {
             onChange={handleChange}
             placeholder="Write your message here..."
             rows={4}
+            className="bg-gray-50"
             required
           />
         </div>

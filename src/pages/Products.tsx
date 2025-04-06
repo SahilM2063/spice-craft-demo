@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Filter, Star, ChevronDown } from 'lucide-react';
@@ -22,14 +21,12 @@ const Products = () => {
   const [sortBy, setSortBy] = useState('featured');
   const [selectedCategory, setSelectedCategory] = useState(categoryFromUrl || '');
   
-  // Effect to handle URL category parameter
   useEffect(() => {
     if (categoryFromUrl) {
       setSelectedCategory(categoryFromUrl);
     }
   }, [categoryFromUrl]);
   
-  // Product data - in a real app, this would come from an API
   const products = [
     {
       id: 1,
@@ -121,7 +118,6 @@ const Products = () => {
     }
   ];
 
-  // Filter products based on search term, price range and category
   const filteredProducts = products.filter(product => {
     const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
                           product.category.toLowerCase().includes(searchTerm.toLowerCase());
@@ -130,7 +126,6 @@ const Products = () => {
     return matchesSearch && matchesPrice && matchesCategory;
   });
 
-  // Sort products based on selected option
   const sortedProducts = [...filteredProducts].sort((a, b) => {
     switch (sortBy) {
       case 'price-low':
@@ -153,7 +148,6 @@ const Products = () => {
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <main className="flex-grow">
-        {/* Hero Section */}
         <section className="bg-spice-dark-brown text-white py-12">
           <div className="container-custom">
             <div className="text-center max-w-3xl mx-auto">
@@ -177,11 +171,9 @@ const Products = () => {
           </div>
         </section>
 
-        {/* Products Section */}
         <section className="py-12 bg-muted">
           <div className="container-custom">
             <div className="flex flex-col md:flex-row gap-8">
-              {/* Filters - Mobile Toggle */}
               <div className="md:hidden w-full mb-4">
                 <Button 
                   variant="outline" 
@@ -199,7 +191,6 @@ const Products = () => {
                 </Button>
               </div>
               
-              {/* Filters Panel */}
               <div className={`${showFilters ? 'block' : 'hidden'} md:block md:w-1/4 bg-white rounded-lg shadow-md p-6`}>
                 <h3 className="font-bold text-lg mb-4">Filters</h3>
                 
@@ -255,21 +246,8 @@ const Products = () => {
                     </div>
                   </div>
                 </div>
-                
-                <div>
-                  <h4 className="font-medium mb-2">Origin</h4>
-                  <div className="space-y-2">
-                    {['India', 'Vietnam', 'Turkey', 'Indonesia', 'Mexico'].map((origin) => (
-                      <div key={origin} className="flex items-center">
-                        <Checkbox id={`origin-${origin}`} className="mr-2" />
-                        <label htmlFor={`origin-${origin}`} className="text-sm">{origin}</label>
-                      </div>
-                    ))}
-                  </div>
-                </div>
               </div>
               
-              {/* Product Grid */}
               <div className="md:w-3/4">
                 <div className="bg-white rounded-lg shadow-md p-4 mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center">
                   <p className="text-muted-foreground mb-4 sm:mb-0">

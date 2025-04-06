@@ -3,25 +3,21 @@ import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ContactForm from '@/components/ContactForm';
-import MapSection from '@/components/MapSection';
 import WhatsAppButton from '@/components/WhatsAppButton';
+import MapSection from '@/components/MapSection';
 
 const Contact = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <main className="flex-grow">
-        <section className="py-12 bg-muted">
+        <section className="py-16 bg-muted">
           <div className="container-custom">
             <div className="text-center mb-12">
               <h1 className="text-4xl font-serif font-bold mb-4">Contact Us</h1>
-              <p className="text-xl text-muted-foreground">Coming Soon...</p>
+              <p className="text-xl text-muted-foreground mb-12">Get in touch with our team</p>
             </div>
-          </div>
-        </section>
-        <MapSection />
-        <section className="py-16">
-          <div className="container-custom">
+            
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               <ContactForm />
 
@@ -36,7 +32,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <h4 className="text-lg font-medium">Phone</h4>
-                      <p className="text-muted-foreground">+1 (555) 123-4567</p>
+                      <a href="tel:+15551234567" className="text-muted-foreground hover:text-spice-green">+1 (555) 123-4567</a>
                     </div>
                   </div>
 
@@ -48,7 +44,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <h4 className="text-lg font-medium">Email</h4>
-                      <p className="text-muted-foreground">info@spicecraft.com</p>
+                      <a href="mailto:info@spicecraft.com" className="text-muted-foreground hover:text-spice-green">info@spicecraft.com</a>
                     </div>
                   </div>
 
@@ -61,10 +57,15 @@ const Contact = () => {
                     </div>
                     <div>
                       <h4 className="text-lg font-medium">Address</h4>
-                      <p className="text-muted-foreground">
+                      <a 
+                        href="https://maps.google.com/?q=Ahmedabad,Gujarat,India" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-muted-foreground hover:text-spice-green"
+                      >
                         123 Spice Avenue, Flavor District,<br/>
                         Ahmedabad, Gujarat, India
-                      </p>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -72,6 +73,7 @@ const Contact = () => {
             </div>
           </div>
         </section>
+        <MapSection />
       </main>
       <Footer />
       <WhatsAppButton />

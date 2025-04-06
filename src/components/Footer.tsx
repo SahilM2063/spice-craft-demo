@@ -80,18 +80,35 @@ const Footer = () => {
             <h4 className="text-lg font-bold mb-4">Contact Us</h4>
             <ul className="space-y-4">
               <li className="flex items-start">
-                <MapPin size={18} className="mr-2 mt-1 text-spice-yellow" />
-                <span className="text-gray-300">
-                  123 Spice Avenue, Flavor District,<br />Ahmedabad, Gujarat, India
-                </span>
+                <a 
+                  href="https://maps.google.com/?q=Ahmedabad,Gujarat,India"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start hover:text-spice-yellow transition-colors"
+                >
+                  <MapPin size={18} className="mr-2 mt-1 text-spice-yellow" />
+                  <span className="text-gray-300">
+                    123 Spice Avenue, Flavor District,<br />Ahmedabad, Gujarat, India
+                  </span>
+                </a>
               </li>
               <li className="flex items-center">
-                <Phone size={18} className="mr-2 text-spice-yellow" />
-                <span className="text-gray-300">+1 (555) 123-4567</span>
+                <a 
+                  href="tel:+15551234567"
+                  className="flex items-center hover:text-spice-yellow transition-colors"
+                >
+                  <Phone size={18} className="mr-2 text-spice-yellow" />
+                  <span className="text-gray-300">+1 (555) 123-4567</span>
+                </a>
               </li>
               <li className="flex items-center">
-                <Mail size={18} className="mr-2 text-spice-yellow" />
-                <span className="text-gray-300">info@spicecraft.com</span>
+                <a 
+                  href="mailto:info@spicecraft.com"
+                  className="flex items-center hover:text-spice-yellow transition-colors"
+                >
+                  <Mail size={18} className="mr-2 text-spice-yellow" />
+                  <span className="text-gray-300">info@spicecraft.com</span>
+                </a>
               </li>
             </ul>
           </div>
