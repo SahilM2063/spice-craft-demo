@@ -1,12 +1,12 @@
+
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { ChevronRight, Minus, Plus, ShoppingCart, Star, Truck, Shield, Package, Heart } from 'lucide-react';
+import { useParams, Link } from 'react-router-dom';
+import { ChevronRight, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { Link } from 'react-router-dom';
-import { useToast } from '@/hooks/use-toast';
+import WhatsAppButton from '@/components/WhatsAppButton';
 
 // Placeholder product data - in a real app this would come from an API
 const products = [
@@ -41,7 +41,7 @@ const products = [
       sugars: '0.3g',
       protein: '0.9g'
     },
-    relatedProducts: [2, 4, 8]
+    relatedProducts: [2]
   },
   {
     id: '2',
@@ -74,15 +74,13 @@ const products = [
       sugars: '0.1g',
       protein: '0.8g'
     },
-    relatedProducts: [1, 3, 6]
+    relatedProducts: [1]
   }
 ];
 
 const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
-  const [quantity, setQuantity] = useState(1);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
-  const { toast } = useToast();
   
   // Find the product by ID
   const product = products.find(p => p.id === id) || products[0]; // Fallback to first product if not found
@@ -91,18 +89,9 @@ const ProductDetail = () => {
   const relatedProductIds = product.relatedProducts || [];
   const relatedProducts = products.filter(p => relatedProductIds.includes(Number(p.id)));
   
-  const handleQuantityChange = (amount: number) => {
-    const newQuantity = quantity + amount;
-    if (newQuantity >= 1 && newQuantity <= product.stock) {
-      setQuantity(newQuantity);
-    }
-  };
-  
-  const addToCart = () => {
-    toast({
-      title: "Added to cart",
-      description: `${quantity} × ${product.name} added to your cart`,
-    });
+  const handleWhatsAppEnquiry = () => {
+    const message = encodeURIComponent(`I'm interested in your ${product.name}. Can you provide more details?`);
+    window.open(`https://wa.me/+918888888888?text=${message}`, '_blank');
   };
   
   return (
@@ -115,9 +104,9 @@ const ProductDetail = () => {
             <div className="flex items-center text-sm">
               <Link to="/" className="text-muted-foreground hover:text-foreground">Home</Link>
               <ChevronRight className="h-4 w-4 mx-2 text-muted-foreground" />
-              <Link to="/categories" className="text-muted-foreground hover:text-foreground">Categories</Link>
+              <Link to="/products" className="text-muted-foreground hover:text-foreground">Products</Link>
               <ChevronRight className="h-4 w-4 mx-2 text-muted-foreground" />
-              <Link to={`/categories/${product.category.toLowerCase().replace(' ', '-')}`} className="text-muted-foreground hover:text-foreground">
+              <Link to={`/products?category=${product.category.toLowerCase().replace(' ', '-')}`} className="text-muted-foreground hover:text-foreground">
                 {product.category}
               </Link>
               <ChevronRight className="h-4 w-4 mx-2 text-muted-foreground" />
@@ -188,10 +177,6 @@ const ProductDetail = () => {
                   <span className="ml-2 text-sm">{product.rating} ({product.reviews} reviews)</span>
                 </div>
                 
-                <div className="text-2xl font-bold mb-4 text-spice-dark-brown">
-                  ${product.price.toFixed(2)}
-                </div>
-                
                 <p className="text-muted-foreground mb-6">
                   {product.description}
                 </p>
@@ -205,67 +190,14 @@ const ProductDetail = () => {
                     <span className="text-sm font-medium w-20">Weight:</span>
                     <span>{product.weight}</span>
                   </div>
-                  <div className="flex items-center">
-                    <span className="text-sm font-medium w-20">Availability:</span>
-                    <span className={product.stock > 0 ? "text-green-600" : "text-red-500"}>
-                      {product.stock > 0 ? `In Stock (${product.stock} available)` : "Out of Stock"}
-                    </span>
-                  </div>
                 </div>
                 
-                <div className="flex items-center space-x-4 mb-8">
-                  <div className="flex items-center border rounded-md">
-                    <button 
-                      onClick={() => handleQuantityChange(-1)}
-                      className="px-3 py-2 text-spice-dark-brown hover:bg-muted"
-                      disabled={quantity <= 1}
-                    >
-                      <Minus size={18} />
-                    </button>
-                    <span className="px-4 py-2 border-x">{quantity}</span>
-                    <button 
-                      onClick={() => handleQuantityChange(1)}
-                      className="px-3 py-2 text-spice-dark-brown hover:bg-muted"
-                      disabled={quantity >= product.stock}
-                    >
-                      <Plus size={18} />
-                    </button>
-                  </div>
-                  
-                  <Button onClick={addToCart} className="bg-spice-green hover:bg-spice-dark-green text-white flex-1" size="lg">
-                    <ShoppingCart className="mr-2 h-5 w-5" />
-                    Add to Cart
-                  </Button>
-                  
-                  <Button variant="outline" className="p-3" title="Add to Wishlist">
-                    <Heart size={20} className="text-spice-dark-brown" />
-                  </Button>
-                </div>
-                
-                {/* Shipping & Returns Info */}
-                <div className="border-t pt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="flex items-start">
-                    <Truck className="h-5 w-5 mr-2 text-spice-green" />
-                    <div>
-                      <p className="text-sm font-medium">Free Shipping</p>
-                      <p className="text-xs text-muted-foreground">On orders over $50</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start">
-                    <Package className="h-5 w-5 mr-2 text-spice-green" />
-                    <div>
-                      <p className="text-sm font-medium">Secure Packaging</p>
-                      <p className="text-xs text-muted-foreground">Preserves freshness</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start">
-                    <Shield className="h-5 w-5 mr-2 text-spice-green" />
-                    <div>
-                      <p className="text-sm font-medium">30-Day Returns</p>
-                      <p className="text-xs text-muted-foreground">Satisfaction guaranteed</p>
-                    </div>
-                  </div>
-                </div>
+                <Button 
+                  onClick={handleWhatsAppEnquiry} 
+                  className="bg-spice-green hover:bg-spice-dark-green text-white w-full sm:w-auto"
+                >
+                  Enquire on WhatsApp
+                </Button>
               </div>
             </div>
           </div>
@@ -275,11 +207,10 @@ const ProductDetail = () => {
         <section className="py-8 bg-muted">
           <div className="container-custom">
             <Tabs defaultValue="description">
-              <TabsList className="grid w-full grid-cols-4 mb-8">
+              <TabsList className="grid w-full grid-cols-3 mb-8">
                 <TabsTrigger value="description">Description</TabsTrigger>
                 <TabsTrigger value="usage">Usage & Tips</TabsTrigger>
                 <TabsTrigger value="nutrition">Nutrition Facts</TabsTrigger>
-                <TabsTrigger value="reviews">Reviews</TabsTrigger>
               </TabsList>
               
               <TabsContent value="description" className="bg-white rounded-lg shadow-md p-6">
@@ -356,83 +287,6 @@ const ProductDetail = () => {
                   * Percent Daily Values are based on a 2,000 calorie diet. Your daily values may be higher or lower depending on your calorie needs.
                 </p>
               </TabsContent>
-              
-              <TabsContent value="reviews" className="bg-white rounded-lg shadow-md p-6">
-                <div className="flex items-center justify-between mb-6">
-                  <h3 className="text-xl font-bold">Customer Reviews</h3>
-                  <Button>Write a Review</Button>
-                </div>
-                
-                <div className="mb-8">
-                  <div className="flex items-center mb-4">
-                    <div className="flex mr-4">
-                      {[...Array(5)].map((_, i) => (
-                        <Star 
-                          key={i} 
-                          size={24} 
-                          className={i < Math.floor(product.rating) ? "text-spice-yellow fill-spice-yellow" : "text-gray-300"}
-                        />
-                      ))}
-                    </div>
-                    <span className="text-lg font-medium">{product.rating} out of 5</span>
-                  </div>
-                  <p className="text-muted-foreground">{product.reviews} global ratings</p>
-                </div>
-                
-                {/* Sample reviews */}
-                <div className="space-y-6">
-                  <div className="border-b pb-6">
-                    <div className="flex items-center mb-2">
-                      <div className="flex mr-2">
-                        {[...Array(5)].map((_, i) => (
-                          <Star 
-                            key={i} 
-                            size={16} 
-                            className={i < 5 ? "text-spice-yellow fill-spice-yellow" : "text-gray-300"}
-                          />
-                        ))}
-                      </div>
-                      <span className="font-medium">Exceptional Quality</span>
-                    </div>
-                    <p className="text-sm text-muted-foreground mb-2">By Sarah J. on May 12, 2023</p>
-                    <p>This is the best turmeric I've ever used! The color is vibrant, the aroma is strong, and it adds such a rich flavor to my curries. Definitely worth the price.</p>
-                  </div>
-                  
-                  <div className="border-b pb-6">
-                    <div className="flex items-center mb-2">
-                      <div className="flex mr-2">
-                        {[...Array(5)].map((_, i) => (
-                          <Star 
-                            key={i} 
-                            size={16} 
-                            className={i < 4 ? "text-spice-yellow fill-spice-yellow" : "text-gray-300"}
-                          />
-                        ))}
-                      </div>
-                      <span className="font-medium">Great Product</span>
-                    </div>
-                    <p className="text-sm text-muted-foreground mb-2">By Michael T. on April 3, 2023</p>
-                    <p>I've been using this turmeric for a few weeks now and am very impressed with the quality. The color and aroma are excellent. I would have given 5 stars but the packaging could be improved to keep it fresher longer.</p>
-                  </div>
-                  
-                  <div>
-                    <div className="flex items-center mb-2">
-                      <div className="flex mr-2">
-                        {[...Array(5)].map((_, i) => (
-                          <Star 
-                            key={i} 
-                            size={16} 
-                            className={i < 5 ? "text-spice-yellow fill-spice-yellow" : "text-gray-300"}
-                          />
-                        ))}
-                      </div>
-                      <span className="font-medium">Amazing Flavor</span>
-                    </div>
-                    <p className="text-sm text-muted-foreground mb-2">By Rachel K. on March 17, 2023</p>
-                    <p>I can really taste the difference compared to the grocery store brands. This turmeric has a much more complex flavor and the color is incredible. Will definitely be buying more when I run out!</p>
-                  </div>
-                </div>
-              </TabsContent>
             </Tabs>
           </div>
         </section>
@@ -461,7 +315,6 @@ const ProductDetail = () => {
                       <div className="text-center">
                         <span className="text-sm text-spice-green font-medium">{product.category}</span>
                         <h3 className="text-lg font-bold mt-1 mb-2">{product.name}</h3>
-                        <p className="text-spice-dark-brown font-semibold">${product.price.toFixed(2)}</p>
                       </div>
                     </div>
                   </Link>
@@ -472,6 +325,7 @@ const ProductDetail = () => {
         )}
       </main>
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 };

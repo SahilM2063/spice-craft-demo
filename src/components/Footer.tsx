@@ -38,11 +38,6 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/categories" className="text-gray-300 hover:text-spice-yellow transition-colors">
-                  Categories
-                </Link>
-              </li>
-              <li>
                 <Link to="/products" className="text-gray-300 hover:text-spice-yellow transition-colors">
                   Products
                 </Link>
@@ -64,28 +59,18 @@ const Footer = () => {
             <h4 className="text-lg font-bold mb-4">Categories</h4>
             <ul className="space-y-2">
               <li>
-                <Link to="/categories/whole-spices" className="text-gray-300 hover:text-spice-yellow transition-colors">
+                <Link to="/products?category=whole-spices" className="text-gray-300 hover:text-spice-yellow transition-colors">
                   Whole Spices
                 </Link>
               </li>
               <li>
-                <Link to="/categories/ground-spices" className="text-gray-300 hover:text-spice-yellow transition-colors">
+                <Link to="/products?category=ground-spices" className="text-gray-300 hover:text-spice-yellow transition-colors">
                   Ground Spices
                 </Link>
               </li>
               <li>
-                <Link to="/categories/oil-seeds" className="text-gray-300 hover:text-spice-yellow transition-colors">
+                <Link to="/products?category=oil-seeds" className="text-gray-300 hover:text-spice-yellow transition-colors">
                   Oil Seeds
-                </Link>
-              </li>
-              <li>
-                <Link to="/categories/blends" className="text-gray-300 hover:text-spice-yellow transition-colors">
-                  Spice Blends
-                </Link>
-              </li>
-              <li>
-                <Link to="/categories/herbs" className="text-gray-300 hover:text-spice-yellow transition-colors">
-                  Herbs
                 </Link>
               </li>
             </ul>
@@ -97,7 +82,7 @@ const Footer = () => {
               <li className="flex items-start">
                 <MapPin size={18} className="mr-2 mt-1 text-spice-yellow" />
                 <span className="text-gray-300">
-                  123 Spice Avenue, Flavor District,<br />Culinary City, 45678
+                  123 Spice Avenue, Flavor District,<br />Ahmedabad, Gujarat, India
                 </span>
               </li>
               <li className="flex items-center">
@@ -123,9 +108,6 @@ const Footer = () => {
               </Link>
               <Link to="/terms" className="text-gray-400 hover:text-white text-sm transition-colors">
                 Terms of Service
-              </Link>
-              <Link to="/shipping" className="text-gray-400 hover:text-white text-sm transition-colors">
-                Shipping Policy
               </Link>
             </div>
           </div>

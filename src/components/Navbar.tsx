@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, Phone, ShoppingCart, Search } from 'lucide-react';
+import { Menu, X, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useIsMobile } from '@/hooks/use-mobile';
 
@@ -31,9 +31,6 @@ const Navbar = () => {
               <Link to="/" className="text-foreground hover:text-spice-green font-medium transition-colors">
                 Home
               </Link>
-              <Link to="/categories" className="text-foreground hover:text-spice-green font-medium transition-colors">
-                Categories
-              </Link>
               <Link to="/products" className="text-foreground hover:text-spice-green font-medium transition-colors">
                 Products
               </Link>
@@ -47,12 +44,6 @@ const Navbar = () => {
           )}
 
           <div className="flex items-center space-x-4">
-            <Button variant="ghost" size="icon" className="text-spice-dark-brown">
-              <Search size={20} />
-            </Button>
-            <Button variant="ghost" size="icon" className="text-spice-dark-brown">
-              <ShoppingCart size={20} />
-            </Button>
             <Button variant="ghost" size="icon" className="text-spice-dark-brown md:hidden" onClick={toggleMenu}>
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </Button>
@@ -75,13 +66,6 @@ const Navbar = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Home
-              </Link>
-              <Link 
-                to="/categories" 
-                className="text-foreground hover:text-spice-green font-medium transition-colors px-4 py-2"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Categories
               </Link>
               <Link 
                 to="/products" 
