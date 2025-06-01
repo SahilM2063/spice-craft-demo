@@ -19,7 +19,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between py-4">
           <div className="flex items-center">
             <Link to="/" className="flex items-center space-x-2">
-              <img src={logo} alt="logo" className="h-12"/>
+              <img src={logo} alt="logo" className="w-20" />
             </Link>
           </div>
 
@@ -32,12 +32,12 @@ const Navbar = () => {
               >
                 Home
               </Link>
-              <Link
+              {/* <Link
                 to="/products"
                 className="text-foreground hover:text-spice-green font-medium transition-colors"
               >
                 Products
-              </Link>
+              </Link> */}
               <Link
                 to="/about"
                 className="text-foreground hover:text-spice-green font-medium transition-colors"
@@ -64,8 +64,8 @@ const Navbar = () => {
             </Button>
             <div className="hidden md:flex items-center">
               <Phone size={16} className="text-spice-green mr-2" />
-              <a href="tel:+916351005903" className="text-sm font-medium">
-                +91 6351005903
+              <a href="tel:+917572893358" className="text-sm font-medium">
+                +91 75728 93358
               </a>
             </div>
           </div>
@@ -84,13 +84,13 @@ const Navbar = () => {
               >
                 Home
               </Link>
-              <Link
+              {/* <Link
                 to="/products"
                 className="text-foreground hover:text-spice-green font-medium transition-colors px-4 py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Products
-              </Link>
+              </Link> */}
               <Link
                 to="/about"
                 className="text-foreground hover:text-spice-green font-medium transition-colors px-4 py-2"
@@ -107,8 +107,8 @@ const Navbar = () => {
               </Link>
               <div className="flex items-center px-4 py-2">
                 <Phone size={16} className="text-spice-green mr-2" />
-                <a href="tel:+916351005903" className="text-sm font-medium">
-                  +91 6351005903
+                <a href="tel:+917572893358" className="text-sm font-medium">
+                  +91 75728 93358
                 </a>
               </div>
             </nav>

@@ -8,16 +8,16 @@ import {
   Phone,
   MapPin,
 } from "lucide-react";
-import logow from "./../../public/assets/logow.png";
+import logo from "./../../public/assets/logo.png";
 
 const Footer = () => {
   return (
     <footer className="bg-spice-dark-brown text-white">
       <div className="container-custom py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div className="space-y-2">
             <Link to={"/"}>
-              <img src={logow} className="h-12" alt="logo" />
+              <img src={logo} className="w-20 object-cover" alt="logo" />
             </Link>
             <p className="text-gray-300 mb-4">
               Premium quality spices sourced directly from the finest farms
@@ -87,36 +87,6 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-lg font-bold mb-4">Categories</h4>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  to="/products?category=whole-spices"
-                  className="text-gray-300 hover:text-spice-yellow transition-colors"
-                >
-                  Whole Spices
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/products?category=ground-spices"
-                  className="text-gray-300 hover:text-spice-yellow transition-colors"
-                >
-                  Ground Spices
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/products?category=oil-seeds"
-                  className="text-gray-300 hover:text-spice-yellow transition-colors"
-                >
-                  Oil Seeds
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          <div>
             <h4 className="text-lg font-bold mb-4">Contact Us</h4>
             <ul className="space-y-4">
               <li className="flex items-start">
@@ -139,20 +109,20 @@ const Footer = () => {
               </li>
               <li className="flex items-center">
                 <a
-                  href="tel:+916351005903"
+                  href="tel:+917572893358"
                   className="flex items-center hover:text-spice-yellow transition-colors"
                 >
                   <Phone size={18} className="mr-2 text-spice-yellow" />
-                  <span className="text-gray-300">+91 6351005903</span>
+                  <span className="text-gray-300">+91 75728 93358</span>
                 </a>
               </li>
               <li className="flex items-center">
                 <a
-                  href="mailto:mbagro5654@gmail.com"
+                  href="mailto:mbagro.info@gmail.com"
                   className="flex items-center hover:text-spice-yellow transition-colors"
                 >
                   <Mail size={18} className="mr-2 text-spice-yellow" />
-                  <span className="text-gray-300">mbagro5654@gmail.com</span>
+                  <span className="text-gray-300">mbagro.info@gmail.com</span>
                 </a>
               </li>
             </ul>
@@ -188,7 +158,7 @@ const Footer = () => {
             <p className="text-gray-400 text-sm mb-4 md:mb-0">
               &copy; {new Date().getFullYear()} MB Agro. All rights reserved.
             </p>
-            <div className="flex space-x-4">
+            {/* <div className="flex space-x-4">
               <Link
                 to="/privacy"
                 className="text-gray-400 hover:text-white text-sm transition-colors"
@@ -201,7 +171,7 @@ const Footer = () => {
               >
                 Terms of Service
               </Link>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

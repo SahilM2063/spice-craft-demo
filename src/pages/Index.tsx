@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -8,15 +8,28 @@ import ContactForm from "@/components/ContactForm";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import MapSection from "@/components/MapSection";
 import hero from "./../../public/assets/hero.png";
-import w1 from "./../../public/assets/w1.jpg";
-import w2 from "./../../public/assets/w2.avif";
-import w3 from "./../../public/assets/w3.avif";
-import g1 from "./../../public/assets/g1.jpg";
-import g2 from "./../../public/assets/g2.jpg";
-import g3 from "./../../public/assets/g3.jpg";
-import o1 from "./../../public/assets/o1.jpg";
-import o2 from "./../../public/assets/o2.jpg";
-import o3 from "./../../public/assets/o3.jpg";
+import { products } from "@/data/product";
+
+const scrollToProductSection = () => {
+  const productSection = document.getElementById("products");
+  if (productSection) {
+    // Using only valid ScrollIntoViewOptions properties
+    productSection.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+      inline: "nearest"
+    });
+
+    // If you need an offset, you can adjust the scroll position after scrolling
+    window.scrollBy(0, -100);
+  }
+};
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+};
 
 const HeroSection = () => {
   return (
@@ -25,17 +38,20 @@ const HeroSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div className="animate-fade-in">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6">
-              Premium Quality <span className="text-spice-yellow">Spices</span>{" "}
-              for Your Kitchen
+              Premium quality <span className="text-spice-yellow">cumin seeds </span>{" "}
+              for your business and daily needs
             </h1>
             <p className="text-xl opacity-90 mb-8">
               Directly sourced from farms across the globe to deliver the most
               authentic flavors to your recipes.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Link to={"/products"} className="btn-secondary border">
+              <button
+                onClick={scrollToProductSection}
+                className="btn-secondary border"
+              >
                 Explore Products
-              </Link>
+              </button>
             </div>
           </div>
           <div className="flex justify-end">
@@ -260,133 +276,71 @@ const WhyChooseUsSection = () => {
   );
 };
 
-const CategoryCardsSection = () => {
-  const handleWhatsAppClick = (category: string) => {
+const ProductsSection = () => {
+
+
+  const handleWhatsAppEnquiry = (product: any) => {
     const message = encodeURIComponent(
-      `I'm interested in your ${category} category. Can you provide more details?`
+      `I'm interested in your ${product.name}. Can you provide more details?`
     );
-    window.open(`https://wa.me/+916351005903?text=${message}`, "_blank");
+
+    const phone = "917572893358";
+    const url = `https://wa.me/${phone}?text=${message}`;
+
+    window.open(url, "_blank");
   };
 
   return (
-    <section className="py-16 bg-gradient-to-b from-spice-dark-brown to-spice-brown">
+    <section className="py-16 bg-gradient-to-b from-spice-dark-brown to-spice-brown" id="products">
       <div className="container-custom">
         <div className="text-center mb-12">
           <h2 className="text-lg uppercase tracking-wider text-spice-yellow font-medium mb-2">
-            Best In Class
+            Our Best Selling Products
           </h2>
-          <h3 className="section-title text-white mb-4">Our Categories</h3>
+          <h3 className="section-title text-white mb-4">Our Products</h3>
           <p className="text-gray-300 max-w-3xl mx-auto">
             Explore our wide range of spices, herbs, seeds and oils to elevate
             your culinary creations
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="category-card p-6 flex gap-4 flex-col items-center text-center">
-            <h3 className="text-3xl font-serif font-bold mb-1">WHOLE</h3>
-            <h4 className="text-5xl font-serif font-bold mb-6">SPICES</h4>
-            <div className="flex flex-wrap justify-center gap-2">
-              <img
-                src={w1}
-                alt="Whole Spices"
-                className="w-24 h-24 object-cover rounded-full border-2 border-yellow-400"
-              />
-              <img
-                src={w2}
-                alt="Whole Spices"
-                className="w-24 h-24 object-cover rounded-full border-2 border-yellow-400"
-              />
-              <img
-                src={w3}
-                alt="Whole Spices"
-                className="w-24 h-24 object-cover rounded-full border-2 border-yellow-400"
-              />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {products.map((product) => (
+            <div key={product.id} className="product-card group bg-white rounded-lg shadow-md">
+              <div className="p-4">
+                <div className="bg-muted rounded-lg mb-4">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-48 object-cover transition-transform group-hover:scale-105"
+                  />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold mt-1 mb-4">
+                    {product.name}
+                  </h3>
+                  <div className="flex flex-col sm:flex-row gap-2">
+                    <Link
+                      to={`/products/${product.id}`}
+                      onClick={scrollToTop}
+                      className="flex-1"
+                    >
+                      <Button className="w-full bg-spice-green hover:bg-spice-dark-green text-white">
+                        View Details
+                      </Button>
+                    </Link>
+                    <Button
+                      variant="outline"
+                      className="border-spice-green text-spice-green hover:bg-spice-green/10"
+                      onClick={() => handleWhatsAppEnquiry(product)}
+                    >
+                      Enquire
+                    </Button>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="flex flex-col sm:flex-row gap-4 mt-6">
-              <Button
-                className="bg-black  text-white font-medium rounded-full"
-                onClick={() => handleWhatsAppClick("Whole Spices")}
-              >
-                ENQUIRE NOW
-              </Button>
-              <Link to="/products?category=whole-spices">
-                <Button className="border bg-spice-green hover:bg-opacity-80 text-white font-medium rounded-full">
-                  VIEW PRODUCTS
-                </Button>
-              </Link>
-            </div>
-          </div>
-
-          <div className="category-card p-6 flex gap-4 flex-col items-center text-center">
-            <h3 className="text-3xl font-serif font-bold mb-1">OIL</h3>
-            <h4 className="text-5xl font-serif font-bold mb-6">SEED</h4>
-            <div className="flex flex-wrap justify-center gap-2">
-              <img
-                src={o1}
-                alt="Oil Seeds"
-                className="w-24 h-24 object-cover rounded-full border-2 border-yellow-400"
-              />
-              <img
-                src={o2}
-                alt="Oil Seeds"
-                className="w-24 h-24 object-cover rounded-full border-2 border-yellow-400"
-              />
-              <img
-                src={o3}
-                alt="Oil Seeds"
-                className="w-24 h-24 object-cover rounded-full border-2 border-yellow-400"
-              />
-            </div>
-            <div className="flex flex-col sm:flex-row gap-4 mt-6">
-              <Button
-                className="bg-black  text-white font-medium rounded-full"
-                onClick={() => handleWhatsAppClick("Oil Seeds")}
-              >
-                ENQUIRE NOW
-              </Button>
-              <Link to="/products?category=oil-seeds">
-                <Button className="border bg-spice-green hover:bg-opacity-80 text-white font-medium rounded-full">
-                  VIEW PRODUCTS
-                </Button>
-              </Link>
-            </div>
-          </div>
-
-          <div className="category-card p-6 flex gap-4 flex-col items-center text-center">
-            <h3 className="text-3xl font-serif font-bold mb-1">GROUND</h3>
-            <h4 className="text-5xl font-serif font-bold mb-6">SPICES</h4>
-            <div className="flex flex-wrap justify-center gap-2">
-              <img
-                src={g1}
-                alt="Ground Spices"
-                className="w-24 h-24 object-cover rounded-full border-2 border-yellow-400"
-              />
-              <img
-                src={g2}
-                alt="Ground Spices"
-                className="w-24 h-24 object-cover rounded-full border-2 border-yellow-400"
-              />
-              <img
-                src={g3}
-                alt="Ground Spices"
-                className="w-24 h-24 object-cover rounded-full border-2 border-yellow-400"
-              />
-            </div>
-            <div className="flex flex-col sm:flex-row gap-4 mt-6">
-              <Button
-                className="bg-black  text-white font-medium rounded-full"
-                onClick={() => handleWhatsAppClick("Ground Spices")}
-              >
-                ENQUIRE NOW
-              </Button>
-              <Link to="/products?category=ground-spices">
-                <Button className="border bg-spice-green hover:bg-opacity-80 text-white font-medium rounded-full">
-                  VIEW PRODUCTS
-                </Button>
-              </Link>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>
@@ -460,8 +414,8 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <h4 className="text-lg font-medium">Phone</h4>
-                  <a href="tel:+916351005903" className="text-muted-foreground">
-                    +91 6351005903{" "}
+                  <a href="tel:+917572893358" className="text-muted-foreground">
+                    +91 75728 93358{" "}
                   </a>
                 </div>
               </div>
@@ -485,11 +439,11 @@ const ContactSection = () => {
                 <div>
                   <h4 className="text-lg font-medium">Email</h4>
                   <a
-                    href="mailto:mbagro5654@gmail.com"
+                    href="mailto:mbagro.info@gmail.com"
                     className="text-muted-foreground"
                   >
                     {" "}
-                    mbagro5654@gmail.com
+                    mbagro.info@gmail.com
                   </a>
                 </div>
               </div>
@@ -544,7 +498,7 @@ const Index = () => {
       <Navbar />
       <main className="flex-grow">
         <HeroSection />
-        <CategoryCardsSection />
+        <ProductsSection />
         <WhyChooseUsSection />
         <MapSection />
         <ContactSection />
