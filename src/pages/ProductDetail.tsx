@@ -112,12 +112,25 @@ const ProductDetail = () => {
 
                 <div className="mb-6"></div>
 
-                <Button
-                  onClick={handleWhatsAppEnquiry}
-                  className="bg-spice-green hover:bg-spice-dark-green text-white w-full sm:w-auto"
-                >
-                  Enquire on WhatsApp
-                </Button>
+                <div className="flex flex-col sm:flex-row gap-2">
+                  <Button
+                    onClick={handleWhatsAppEnquiry}
+                    className="bg-spice-green hover:bg-spice-dark-green text-white w-full sm:w-auto"
+                  >
+                    Enquire on WhatsApp
+                  </Button>
+                  <a
+                    href={`mailto:mbagro.info@gmail.com?subject=Enquiry about ${encodeURIComponent(product.name)}&body=Hello,%0D%0A%0D%0AI am interested in your product: ${encodeURIComponent(product.name)}. Please provide more details.`}
+                    className="w-full sm:w-auto"
+                  >
+                    <Button
+                      type="button"
+                      className="bg-blue-600 hover:bg-blue-800 text-white w-full sm:w-auto"
+                    >
+                      Enquire by Mail
+                    </Button>
+                  </a>
+                </div>
               </div>
             </div>
           </div>

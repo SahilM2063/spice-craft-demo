@@ -42,17 +42,9 @@ const HeroSection = () => {
               for your business and daily needs
             </h1>
             <p className="text-xl opacity-90 mb-8">
-              Directly sourced from farms across the globe to deliver the most
+              Directly sourced from farms across the india to deliver the most
               authentic flavors to your recipes.
             </p>
-            <div className="flex flex-wrap gap-4">
-              <button
-                onClick={scrollToProductSection}
-                className="btn-secondary border"
-              >
-                Explore Products
-              </button>
-            </div>
           </div>
           <div className="flex justify-end">
             <img
@@ -277,6 +269,17 @@ const WhyChooseUsSection = () => {
 };
 
 const ProductsSection = () => {
+  const [currentIndex, setCurrentIndex] = React.useState(0);
+  const isMobile = window.innerWidth < 640; // sm breakpoint
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev === 0 ? products.length - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev === products.length - 1 ? 0 : prev + 1));
+  };
+
 
 
   const handleWhatsAppEnquiry = (product: any) => {
@@ -304,21 +307,107 @@ const ProductsSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Mobile Slider with Touch/Drag */}
+        <div className="sm:hidden relative">
+          <div
+            className="flex items-center justify-center w-full"
+            onTouchStart={(e) => {
+              (window as any)._touchStartX = e.touches[0].clientX;
+            }}
+            onTouchMove={(e) => {
+              (window as any)._touchMoveX = e.touches[0].clientX;
+            }}
+            onTouchEnd={() => {
+              const startX = (window as any)._touchStartX;
+              const endX = (window as any)._touchMoveX;
+              if (startX !== undefined && endX !== undefined) {
+                const diff = endX - startX;
+                if (Math.abs(diff) > 50) {
+                  if (diff < 0) {
+                    // Swipe left
+                    setCurrentIndex((prev) => (prev === products.length - 1 ? 0 : prev + 1));
+                  } else {
+                    // Swipe right
+                    setCurrentIndex((prev) => (prev === 0 ? products.length - 1 : prev - 1));
+                  }
+                }
+              }
+              (window as any)._touchStartX = undefined;
+              (window as any)._touchMoveX = undefined;
+            }}
+          >
+            <div className="w-full">
+              {products.length > 0 && (
+                <div key={products[currentIndex].id} className="product-card group bg-white rounded-lg shadow-md ">
+                  <div className="p-4">
+                    <h3 className="text-lg font-bold mt-1 mb-4">
+                      {products[currentIndex].name}
+                    </h3>
+                    <div className="bg-muted rounded-lg mb-4">
+                      <img
+                        src={products[currentIndex].image}
+                        alt={products[currentIndex].name}
+                        className="w-full h-48 object-cover transition-transform lg:group-hover:scale-105 rounded-lg"
+                      />
+                    </div>
+                    <div>
+                      <div className="flex flex-col gap-2">
+                        <Link
+                          to={`/products/${products[currentIndex].id}`}
+                          onClick={scrollToTop}
+                          className="flex-1"
+                        >
+                          <Button className="w-full bg-spice-green hover:bg-spice-dark-green text-white">
+                            View Details
+                          </Button>
+                        </Link>
+                        <Button
+                          variant="outline"
+                          className="border-spice-green text-spice-green hover:bg-spice-green/10"
+                          onClick={() => handleWhatsAppEnquiry(products[currentIndex])}
+                        >
+                          Enquire
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+          {/* Indicator Dots */}
+          <div className="flex justify-center mt-4 gap-2 sm:hidden">
+            {products.map((_, idx) => (
+              <button
+                key={idx}
+                aria-label={`Go to slide ${idx + 1}`}
+                onClick={() => setCurrentIndex(idx)}
+                className={`w-2.5 h-2.5 rounded-full transition-all duration-200 border border-spice-green focus:outline-none ${currentIndex === idx
+                  ? 'bg-spice-green scale-125'
+                  : 'bg-gray-300'
+                  }`}
+                style={{ outline: 'none' }}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Grid for sm and up */}
+        <div className="hidden sm:grid grid-cols-2 lg:grid-cols-3 gap-6">
           {products.map((product) => (
             <div key={product.id} className="product-card group bg-white rounded-lg shadow-md">
               <div className="p-4">
+                <h3 className="text-lg font-bold mt-1 mb-4">
+                  {product.name}
+                </h3>
                 <div className="bg-muted rounded-lg mb-4">
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="w-full h-48 object-cover transition-transform group-hover:scale-105"
+                    className="w-full h-48 object-cover transition-transform group-hover:scale-105 rounded-lg"
                   />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold mt-1 mb-4">
-                    {product.name}
-                  </h3>
                   <div className="flex flex-col sm:flex-row gap-2">
                     <Link
                       to={`/products/${product.id}`}

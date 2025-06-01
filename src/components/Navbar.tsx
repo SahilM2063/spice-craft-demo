@@ -17,7 +17,7 @@ const Navbar = () => {
     <header className="sticky top-0 z-50 bg-white shadow-md">
       <div className="container-custom">
         <div className="flex items-center justify-between py-4">
-          <div className="flex items-center">
+          <div className="flex w-full lg:w-fit md:w-fit lg:justify-start md:justify-start justify-center">
             <Link to="/" className="flex items-center space-x-2">
               <img src={logo} alt="logo" className="w-20" />
             </Link>
@@ -56,11 +56,11 @@ const Navbar = () => {
           <div className="flex items-center space-x-4">
             <Button
               variant="ghost"
-              size="icon"
+              size="default"
               className="text-spice-dark-brown md:hidden"
               onClick={toggleMenu}
             >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {isMenuOpen ? <X size={48} /> : <Menu size={48} />}
             </Button>
             <div className="hidden md:flex items-center">
               <Phone size={16} className="text-spice-green mr-2" />

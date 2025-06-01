@@ -21,7 +21,7 @@ const Footer = () => {
             </Link>
             <p className="text-gray-300 mb-4">
               Premium quality spices sourced directly from the finest farms
-              across the globe, delivering authentic flavor to your kitchen.
+              across the india, delivering authentic flavor to your kitchen.
             </p>
             <div className="lg:flex space-x-4 hidden">
               <a
@@ -59,14 +59,14 @@ const Footer = () => {
                   Home
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link
                   to="/products"
                   className="text-gray-300 hover:text-spice-yellow transition-colors"
                 >
                   Products
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link
                   to="/about"
@@ -131,7 +131,7 @@ const Footer = () => {
 
         <div className="flex w-full justify-center lg:hidden space-x-4 mt-8">
           <a
-            href="https://www.facebook.com/61574966520231/posts/122097279110832217/"
+            href="https://www.facebook.com/share/1McqCJajir/"
             target="_blank"
             className="text-white hover:text-spice-yellow transition-colors"
           >
@@ -145,7 +145,7 @@ const Footer = () => {
             <Twitter size={20} />
           </a>
           <a
-            href="https://www.instagram.com/mbagro5654/profilecard/?igsh=MW84a3FjYnk3NTk3bg=="
+            href="https://www.instagram.com/mbagro.spices/profilecard/?igsh=MW84a3FjYnk3NTk3bg=="
             target="_blank"
             className="text-white hover:text-spice-yellow transition-colors"
           >
