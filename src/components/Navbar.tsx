@@ -64,8 +64,8 @@ const Navbar = () => {
             </Button>
             <div className="hidden md:flex items-center">
               <Phone size={16} className="text-spice-green mr-2" />
-              <a href="tel:+917572893358" className="text-sm font-medium">
-                +91 75728 93358
+              <a href="tel:+916351005903" className="text-sm font-medium">
+                +91 63510 05903
               </a>
             </div>
           </div>
@@ -107,8 +107,8 @@ const Navbar = () => {
               </Link>
               <div className="flex items-center px-4 py-2">
                 <Phone size={16} className="text-spice-green mr-2" />
-                <a href="tel:+917572893358" className="text-sm font-medium">
-                  +91 75728 93358
+                <a href="tel:+916351005903" className="text-sm font-medium">
+                  +91 63510 05903
                 </a>
               </div>
             </nav>

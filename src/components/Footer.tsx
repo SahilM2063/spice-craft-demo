@@ -31,13 +31,9 @@ const Footer = () => {
               >
                 <Facebook size={20} />
               </a>
-              <a
-                href=""
-                target="_blank"
-                className="text-white hover:text-spice-yellow transition-colors"
-              >
+              <span className="text-white hover:text-spice-yellow transition-colors">
                 <Twitter size={20} />
-              </a>
+              </span>
               <a
                 href="https://www.instagram.com/mbagro5654/profilecard/?igsh=MW84a3FjYnk3NTk3bg=="
                 target="_blank"
@@ -109,18 +105,25 @@ const Footer = () => {
               </li>
               <li className="flex items-center">
                 <Phone size={18} className="mr-2 text-spice-yellow" />
-                <a
-                  href="tel:+917572893358"
-                  className="flex items-center hover:text-spice-yellow transition-colors mr-4"
-                >
-                  <span className="text-gray-300">+91 75728 93358</span>
-                </a>
-                <a
-                  href="tel:+918780707994"
-                  className="flex items-center hover:text-spice-yellow transition-colors"
-                >
-                  <span className="text-gray-300">+91 87807 07994</span>
-                </a>
+                <div className="grid lg:grid-cols-2">
+                  <a
+                    href="tel:+916351005903"
+                    className="flex items-center hover:text-spice-yellow transition-colors">
+                    <span className="text-gray-300">+91 63510 05903</span>
+                  </a>
+                  <a
+                    href="tel:+918780707994"
+                    className="flex items-center hover:text-spice-yellow transition-colors"
+                  >
+                    <span className="text-gray-300">+91 87807 07994</span>
+                  </a>
+                  <a
+                    href="tel:+917572893358"
+                    className="flex items-center hover:text-spice-yellow transition-colors mr-4"
+                  >
+                    <span className="text-gray-300">+91 75728 93358</span>
+                  </a>
+                </div>
               </li>
               <li className="flex items-center">
                 <a
@@ -143,13 +146,11 @@ const Footer = () => {
           >
             <Facebook size={20} />
           </a>
-          <a
-            href=""
-            target="_blank"
-            className="text-white hover:text-spice-yellow transition-colors"
+          <span
+            className="text-white hover:text-spice-yellow transition-colors "
           >
             <Twitter size={20} />
-          </a>
+          </span>
           <a
             href="https://www.instagram.com/mbagro.spices/profilecard/?igsh=MW84a3FjYnk3NTk3bg=="
             target="_blank"

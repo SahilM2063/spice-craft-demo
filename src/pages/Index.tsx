@@ -42,7 +42,7 @@ const HeroSection = () => {
               for your business and daily needs
             </h1>
             <p className="text-xl opacity-90 mb-8">
-              Directly sourced from farms across the india to deliver the most
+              Directly sourced from farms across the India to deliver the most
               authentic flavors to your recipes.
             </p>
           </div>
@@ -289,7 +289,7 @@ const ProductsSection = () => {
           </h2>
           <h3 className="section-title text-white mb-4">Our Products</h3>
           <p className="text-gray-300 max-w-3xl mx-auto">
-            Explore our wide range of spices, herbs, seeds and oils to elevate
+            Explore our wide range of cumin seed to elevate
             your culinary creations
           </p>
         </div>
@@ -320,13 +320,18 @@ const ProductsSection = () => {
                         View Details
                       </Button>
                     </Link>
-                    <Button
-                      variant="outline"
-                      className="border-spice-green text-spice-green hover:bg-spice-green/10"
-                      onClick={() => handleWhatsAppEnquiry(product)}
+
+                    <a
+                      href={`mailto:mbagro.info@gmail.com?subject=Enquiry about ${encodeURIComponent(product.name)}&body=Hello,%0D%0A%0D%0AI am interested in your product: ${encodeURIComponent(product.name)}. Please provide more details.`}
+                      className="w-full"
                     >
-                      Enquire
-                    </Button>
+                      <Button
+                        variant="outline"
+                        className="border-spice-green text-spice-green hover:bg-spice-green/10 w-full"
+                      >
+                        Enquire
+                      </Button>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -334,7 +339,7 @@ const ProductsSection = () => {
           ))}
         </div>
       </div>
-    </section>
+    </section >
   );
 };
 
@@ -381,10 +386,10 @@ const ContactSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div className="w-full lg:max-w-[70%] mx-auto">
           <ContactForm />
 
-          <div className="bg-white rounded-lg shadow-lg p-8">
+          {/* <div className="bg-white rounded-lg shadow-lg p-8">
             <h3 className="text-xl font-bold mb-4">Get in Touch</h3>
             <div className="space-y-4">
               <div className="flex items-start">
@@ -405,12 +410,15 @@ const ContactSection = () => {
                 </div>
                 <div >
                   <h4 className="text-lg font-medium">Phone</h4>
-                  <div className="flex flex-row gap-4">
-                    <a href="tel:+917572893358" className="text-muted-foreground">
-                      +91 75728 93358{" "}
+                  <div className="flex flex-col lg:flex-row gap-4">
+                    <a href="tel:+916351005903" className="text-muted-foreground">
+                      +91 63510 05903
                     </a>
                     <a href="tel:+918780707994" className="text-muted-foreground">
                       +91 87807 07994
+                    </a>
+                    <a href="tel:+917572893358" className="text-muted-foreground">
+                      +91 75728 93358{" "}
                     </a>
                   </div>
                 </div>
@@ -481,7 +489,7 @@ const ContactSection = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
