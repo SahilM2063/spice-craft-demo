@@ -43,12 +43,20 @@ const Contact = () => {
                     </div>
                     <div>
                       <h4 className="text-lg font-medium">Phone</h4>
-                      <a
-                        href="tel:+917572893358"
-                        className="text-muted-foreground hover:text-spice-green"
-                      >
-                        +91 75728 93358
-                      </a>
+                      <div className="flex flex-row gap-4">
+                        <a
+                          href="tel:+917572893358"
+                          className="text-muted-foreground hover:text-spice-green"
+                        >
+                          +91 75728 93358
+                        </a>
+                        <a
+                          href="tel:+918780707994"
+                          className="text-muted-foreground hover:text-spice-green"
+                        >
+                          +91 87807 07994
+                        </a>
+                      </div>
                     </div>
                   </div>
 

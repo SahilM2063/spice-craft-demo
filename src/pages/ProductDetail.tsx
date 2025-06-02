@@ -35,7 +35,7 @@ const ProductDetail = () => {
     const message = encodeURIComponent(
       `I'm interested in your ${product.name}. Can you provide more details?`
     );
-    window.open(`https://wa.me/+918888888888?text=${message}`, "_blank");
+    window.open(`https://wa.me/+916351005903?text=${message}`, "_blank");
   };
 
   return (

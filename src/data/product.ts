@@ -19,7 +19,7 @@ export const products = [
     name: "Royal Gold Jeera – Ultra-Pure Kitchen Edition (Grade 1) ",
     tagline: "100% Pure. Zero Waste. Royal Taste.",
     image: first_1,
-    images: [first_1, first_2],
+    images: [first_2, first_1],
     description:
       "Our Royal Gold Jeera offers the highest quality cumin seeds, thoroughly machine-cleaned and polished. With no residue, husk, or stones, it's 100% pure and ready to use straight from the pack.",
     points: [
@@ -37,7 +37,7 @@ export const products = [
     name: "Silver Select Jeera – Near-Perfect Purity (Grade 2)",
     tagline: "Almost Perfect – Just Like Home Needs.",
     image: second_1,
-    images: [second_1, second_2],
+    images: [second_2, second_1],
     description:
       "Silver Select Jeera contains around 95% cumin seeds with a very small amount of dry leaf particles. It's nearly kitchen-ready and only needs light inspection before use.",
     points: [
@@ -54,7 +54,7 @@ export const products = [
     name: "Daily Fresh Jeera – Budget Friendly Choice (Grade 3)",
     tagline: "Smart Choice. Real Flavor. Big Savings.",
     image: third_1,
-    images: [third_1, third_2],
+    images: [third_2, third_1],
     description:
       "This grade includes 85–90% cumin seeds mixed with dry husk, small twigs, and leaf particles. Ideal for users who prefer low-cost cumin and can do basic cleaning.",
     points: [
@@ -70,7 +70,7 @@ export const products = [
     name: "Farmer’s Pick Jeera – Village Harvest Mix (Grade 4)",
     tagline: "Direct from Farms. Raw, Rich & Rustic.",
     image: fourth_1,
-    images: [fourth_1, fourth_2],
+    images: [fourth_2, fourth_1],
     description:
       "Contains around 70–75% cumin seeds mixed with a noticeable quantity of dry stems, leaf fragments, and husk. Suitable for buyers with manual or machine-cleaning setups.",
     points: [
@@ -86,7 +86,7 @@ export const products = [
     name: "Raw Aroma Jeera – Spice Processor’s Bulk Pack (Grade 5)",
     tagline: "Raw Power for Spice Processors.",
     image: fifth_1,
-    images: [fifth_1, fifth_2],
+    images: [fifth_2, fifth_1],
     description:
       "This grade includes about 50–60% cumin seeds, with a high amount of residue including husks, dry leaves, twigs, and occasional small stones.",
     points: [
@@ -102,7 +102,7 @@ export const products = [
     name: "Desi Mandi Jeera – Farm Fresh Raw Stock (Grade 6)",
     tagline: "Bulk Value. Farm Raw. Clean Your Way.",
     image: sixth_1,
-    images: [sixth_1, sixth_2],
+    images: [sixth_2, sixth_1],
     description:
       "A raw farm-direct batch with around 30–40% cumin seeds, mixed with stems, dry leaves, some soil, and husk. Ideal for large spice mills that perform full-scale cleaning and sorting.",
     points: [
@@ -118,7 +118,7 @@ export const products = [
     name: "Jeera Base Blend – Residue Sorting Supply (Grade 7)",
     tagline: "Residue Mix for Feed & Compost Use.",
     image: seventh_1,
-    images: [seventh_1, seventh_2],
+    images: [seventh_2, seventh_1],
     description:
       "This is a low-grade residue mix consisting of mostly stems, husks, dry leaves, and a small amount (~10–20%) of cumin seeds. It is typically sold as waste-grade raw material.",
     points: [
